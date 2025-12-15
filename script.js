@@ -36,7 +36,6 @@ function renderGrid(articles) {
         card.className = 'card';
         card.onclick = () => window.location.href = `?id=${article.id}`;
 
-        // Fixed: Use .png as verified in file system
         const imgPath = `${article.image}.png`;
 
         card.innerHTML = `
@@ -76,7 +75,6 @@ function renderArticle(article) {
 function filterAndSortArticles() {
     let filtered = [...allArticles];
 
-    // Search
     const query = searchInput.value.toLowerCase();
     if (query) {
         filtered = filtered.filter(a =>
@@ -85,7 +83,6 @@ function filterAndSortArticles() {
         );
     }
 
-    // Sort
     const sortVal = sortSelect.value;
     filtered.sort((a, b) => {
         if (sortVal === 'date-desc') return new Date(b.date) - new Date(a.date);
@@ -103,8 +100,7 @@ async function init() {
     const id = getQueryParam('id');
 
     if (id !== null) {
-        // Detail view
-        if (controls) controls.style.display = 'none'; // Hide controls in detail view
+        if (controls) controls.style.display = 'none'; 
         const article = allArticles.find(a => a.id == id);
         if (article) {
             renderArticle(article);
@@ -112,16 +108,11 @@ async function init() {
             app.innerHTML = '<p>Artículo no encontrado. <a href="index.html">Volver</a></p>';
         }
     } else {
-        // Grid view
-        if (controls) controls.style.display = 'flex'; // Show controls
+        if (controls) controls.style.display = 'flex'; 
 
-        // Setup listeners
         if (searchInput) searchInput.addEventListener('input', filterAndSortArticles);
         if (sortSelect) sortSelect.addEventListener('change', filterAndSortArticles);
 
-        // Initial render (default sort is usually date desc from json order, 
-        // but we can force sort if needed. 
-        // Let's force initial sort based on select default (date-desc)
         filterAndSortArticles();
     }
 }
