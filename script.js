@@ -1,30 +1,30 @@
-const app = document.getElementById('app');
-const controls = document.getElementById('controls');
-const searchInput = document.getElementById('searchInput');
-const sortSelect = document.getElementById('sortSelect');
+const contenedor = document.getElementById('app');
+const controles = document.getElementById('controls');
+const buscador = document.getElementById('searchInput');
+const ordenSelect = document.getElementById('sortSelect');
 
-let allArticles = [];
+let articulos = [];
 
-async function loadData() {
+async function cargarDatos() {
     try {
         const response = await fetch('data.json');
         const data = await response.json();
         return data;
     } catch (error) {
         console.error('Error loading data:', error);
-        app.innerHTML = '<p>Error cargando los artículos.</p>';
+        contenedor.innerHTML = '<p>Error cargando los artículos.</p>';
         return [];
     }
 }
 
-function getQueryParam(param) {
+function obtenerParametro(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
 }
 
-function renderGrid(articles) {
+function pintarGrid(articles) {
     if (articles.length === 0) {
-        app.innerHTML = '<p class="no-results">No se encontraron artículos.</p>';
+        contenedor.innerHTML = '<p class="no-results">No se encontraron artículos.</p>';
         return;
     }
 
@@ -48,14 +48,14 @@ function renderGrid(articles) {
         grid.appendChild(card);
     });
 
-    app.innerHTML = '';
-    app.appendChild(grid);
+    contenedor.innerHTML = '';
+    contenedor.appendChild(grid);
 }
 
-function renderArticle(article) {
+function pintarArticulo(article) {
     const imgPath = `${article.image}.png`;
 
-    app.innerHTML = `
+    contenedor.innerHTML = `
         <a href="index.html" class="back-btn">&larr; Volver al inicio</a>
         <article class="article-detail">
             <header class="detail-header">
@@ -72,10 +72,10 @@ function renderArticle(article) {
     `;
 }
 
-function filterAndSortArticles() {
-    let filtered = [...allArticles];
+function filtrarYOrdenar() {
+    let filtered = [...articulos];
 
-    const query = searchInput.value.toLowerCase();
+    const query = buscador.value.toLowerCase();
     if (query) {
         filtered = filtered.filter(a =>
             a.title.toLowerCase().includes(query) ||
@@ -83,7 +83,7 @@ function filterAndSortArticles() {
         );
     }
 
-    const sortVal = sortSelect.value;
+    const sortVal = ordenSelect.value;
     filtered.sort((a, b) => {
         if (sortVal === 'date-desc') return new Date(b.date) - new Date(a.date);
         if (sortVal === 'date-asc') return new Date(a.date) - new Date(b.date);
@@ -92,69 +92,29 @@ function filterAndSortArticles() {
         return 0;
     });
 
-    renderGrid(filtered);
+    pintarGrid(filtered);
 }
 
-async function init() {
-    allArticles = await loadData();
-    const id = getQueryParam('id');
+async function iniciar() {
+    articulos = await cargarDatos();
+    const id = obtenerParametro('id');
 
     if (id !== null) {
-        if (controls) controls.style.display = 'none';
-        const article = allArticles.find(a => a.id == id);
+        if (controles) controles.style.display = 'none';
+        const article = articulos.find(a => a.id == id);
         if (article) {
-            renderArticle(article);
+            pintarArticulo(article);
         } else {
-            app.innerHTML = '<p>Artículo no encontrado. <a href="index.html">Volver</a></p>';
+            contenedor.innerHTML = '<p>Artículo no encontrado. <a href="index.html">Volver</a></p>';
         }
     } else {
-        if (controls) controls.style.display = 'flex';
+        if (controles) controles.style.display = 'flex';
 
-        if (searchInput) searchInput.addEventListener('input', filterAndSortArticles);
-        if (sortSelect) sortSelect.addEventListener('change', filterAndSortArticles);
+        if (buscador) buscador.addEventListener('input', filtrarYOrdenar);
+        if (ordenSelect) ordenSelect.addEventListener('change', filtrarYOrdenar);
 
-        filterAndSortArticles();
+        filtrarYOrdenar();
     }
 }
 
-const themeToggle = document.getElementById('themeToggle');
-const savedTheme = localStorage.getItem('theme') || 'light';
-document.documentElement.setAttribute('data-theme', savedTheme);
-updateThemeIcon(savedTheme);
-
-if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        document.documentElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-        updateThemeIcon(newTheme);
-    });
-}
-
-function updateThemeIcon(theme) {
-    if (themeToggle) {
-        themeToggle.textContent = theme === 'light' ? '🌙' : '☀️';
-    }
-}
-
-const scrollTopBtn = document.getElementById('scrollToTop');
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        scrollTopBtn.classList.add('visible');
-    } else {
-        scrollTopBtn.classList.remove('visible');
-    }
-});
-
-if (scrollTopBtn) {
-    scrollTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-}
-
-init();
+iniciar();
