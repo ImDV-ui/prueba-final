@@ -8,10 +8,10 @@ let articulos = [];
 async function cargarDatos() {
     try {
         const response = await fetch('data.json');
-        const data = await response.json();
-        return data;
+        const datos = await response.json();
+        return datos;
     } catch (error) {
-        console.error('Error loading data:', error);
+        console.error('Error cargando datos:', error);
         contenedor.innerHTML = '<p>Error cargando los artículos.</p>';
         return [];
     }
@@ -22,77 +22,77 @@ function obtenerParametro(param) {
     return urlParams.get(param);
 }
 
-function pintarGrid(articles) {
-    if (articles.length === 0) {
+function pintarGrid(listaArticulos) {
+    if (listaArticulos.length === 0) {
         contenedor.innerHTML = '<p class="no-results">No se encontraron artículos.</p>';
         return;
     }
 
-    const grid = document.createElement('div');
-    grid.className = 'articles-grid';
+    const rejilla = document.createElement('div');
+    rejilla.className = 'articles-grid';
 
-    articles.forEach(article => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.onclick = () => window.location.href = `?id=${article.id}`;
+    listaArticulos.forEach(articulo => {
+        const tarjeta = document.createElement('div');
+        tarjeta.className = 'card';
+        tarjeta.onclick = () => window.location.href = `?id=${articulo.id}`;
 
-        const imgPath = `${article.image}.png`;
+        const rutaImagen = `${articulo.image}.png`;
 
-        card.innerHTML = `
-            <img src="${imgPath}" alt="${article.title}" class="card-image" onerror="this.src='https://via.placeholder.com/300'">
+        tarjeta.innerHTML = `
+            <img src="${rutaImagen}" alt="${articulo.title}" class="card-image" onerror="this.src='https://via.placeholder.com/300'">
             <div class="card-content">
-                <span class="card-date">${article.date}</span>
-                <h3 class="card-title">${article.title}</h3>
+                <span class="card-date">${articulo.date}</span>
+                <h3 class="card-title">${articulo.title}</h3>
             </div>
         `;
-        grid.appendChild(card);
+        rejilla.appendChild(tarjeta);
     });
 
     contenedor.innerHTML = '';
-    contenedor.appendChild(grid);
+    contenedor.appendChild(rejilla);
 }
 
-function pintarArticulo(article) {
-    const imgPath = `${article.image}.png`;
+function pintarArticulo(articulo) {
+    const rutaImagen = `${articulo.image}.png`;
 
     contenedor.innerHTML = `
         <a href="index.html" class="back-btn">&larr; Volver al inicio</a>
         <article class="article-detail">
             <header class="detail-header">
-                <h1 class="detail-title">${article.title}</h1>
+                <h1 class="detail-title">${articulo.title}</h1>
                 <div class="detail-meta">
-                    Por ${article.author} | ${article.date}
+                    Por ${articulo.author} | ${articulo.date}
                 </div>
             </header>
-            <img src="${imgPath}" alt="${article.title}" class="detail-image" onerror="this.src='https://via.placeholder.com/800'">
+            <img src="${rutaImagen}" alt="${articulo.title}" class="detail-image" onerror="this.src='https://via.placeholder.com/800'">
             <div class="detail-body">
-                ${article.content}
+                ${articulo.content}
             </div>
         </article>
     `;
 }
 
 function filtrarYOrdenar() {
-    let filtered = [...articulos];
+    let filtrados = [...articulos];
 
-    const query = buscador.value.toLowerCase();
-    if (query) {
-        filtered = filtered.filter(a =>
-            a.title.toLowerCase().includes(query) ||
-            a.author.toLowerCase().includes(query)
+    const busqueda = buscador.value.toLowerCase();
+    if (busqueda) {
+        filtrados = filtrados.filter(a =>
+            a.title.toLowerCase().includes(busqueda) ||
+            a.author.toLowerCase().includes(busqueda)
         );
     }
 
-    const sortVal = ordenSelect.value;
-    filtered.sort((a, b) => {
-        if (sortVal === 'date-desc') return new Date(b.date) - new Date(a.date);
-        if (sortVal === 'date-asc') return new Date(a.date) - new Date(b.date);
-        if (sortVal === 'title-asc') return a.title.localeCompare(b.title);
-        if (sortVal === 'title-desc') return b.title.localeCompare(a.title);
+    const criterioOrden = ordenSelect.value;
+    filtrados.sort((a, b) => {
+        if (criterioOrden === 'date-desc') return new Date(b.date) - new Date(a.date);
+        if (criterioOrden === 'date-asc') return new Date(a.date) - new Date(b.date);
+        if (criterioOrden === 'title-asc') return a.title.localeCompare(b.title);
+        if (criterioOrden === 'title-desc') return b.title.localeCompare(a.title);
         return 0;
     });
 
-    pintarGrid(filtered);
+    pintarGrid(filtrados);
 }
 
 async function iniciar() {
@@ -101,9 +101,9 @@ async function iniciar() {
 
     if (id !== null) {
         if (controles) controles.style.display = 'none';
-        const article = articulos.find(a => a.id == id);
-        if (article) {
-            pintarArticulo(article);
+        const articulo = articulos.find(a => a.id == id);
+        if (articulo) {
+            pintarArticulo(articulo);
         } else {
             contenedor.innerHTML = '<p>Artículo no encontrado. <a href="index.html">Volver</a></p>';
         }

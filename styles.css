@@ -1,29 +1,29 @@
 :root {
-    /* Vintage Palette */
+
     --primary: #2c241b;
-    /* Dark Ink */
+
     --accent: #8b0000;
-    /* Deep Red */
+
     --bg-color: #fdfbf7;
-    /* Off-white Old Paper */
+
     --card-bg: #f4e4bc;
-    /* Aged Paper / Cardboard */
+
     --text-main: #2b1d0e;
-    /* Sepia Ink */
+
     --text-light: #5d4037;
-    /* Faded Ink */
+
 
     --radius: 2px;
     --gap: 2rem;
     --container-width: 1200px;
 
-    /* Vintage Effects */
+
     --shadow: 2px 2px 0px rgba(44, 36, 27, 0.2);
     --border-color: #4a3c31;
     --border-double: 4px double var(--border-color);
     --border-thin: 1px solid var(--border-color);
 
-    /* Fonts */
+
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Libre Baskerville', serif;
 }
@@ -37,7 +37,10 @@
 body {
     font-family: var(--font-body);
     background-color: var(--bg-color);
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+    background-image: url("images/bg-paper.png");
+    background-repeat: repeat;
+    background-size: 500px;
+    /* Adjust size for better texture scale */
     color: var(--text-main);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -58,7 +61,6 @@ h3 {
     padding: 0 1.5rem;
 }
 
-/* Header - Newspaper Masthead Style */
 .main-header {
     background-color: transparent;
     border-bottom: 2px solid var(--primary);
@@ -131,7 +133,6 @@ h3 {
     font-style: italic;
 }
 
-/* Grid & Cards - Advertisement Style */
 .articles-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -151,7 +152,6 @@ h3 {
     box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
-/* Corner Decorations */
 .card::before,
 .card::after {
     content: '★';
@@ -208,7 +208,6 @@ h3 {
     letter-spacing: 2px;
     margin-bottom: 0.5rem;
     font-family: sans-serif;
-    /* Slight contrast for small meta text */
     border-bottom: 1px solid transparent;
     display: inline-block;
 }
@@ -226,7 +225,6 @@ h3 {
     text-decoration: underline;
 }
 
-/* Article Detail - Book/Paper Style */
 .article-detail {
     background: var(--card-bg);
     padding: 4rem;
@@ -277,7 +275,6 @@ h3 {
     text-align: justify;
 }
 
-/* Drop cap for the first paragraph */
 .detail-body p:first-of-type::first-letter {
     font-family: var(--font-heading);
     font-size: 4rem;
