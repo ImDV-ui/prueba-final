@@ -40,7 +40,6 @@ body {
     background-image: url("images/bg-paper.png");
     background-repeat: repeat;
     background-size: 500px;
-    /* Adjust size for better texture scale */
     color: var(--text-main);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
