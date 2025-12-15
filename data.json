@@ -1,0 +1,82 @@
+[
+  {
+    "id": 0,
+    "title": "La caída del Imperio Romano de Occidente",
+    "author": "María González",
+    "date": "2021-03-15",
+    "image": "images/image-01",
+    "content": "La caída del Imperio Romano de Occidente fue un proceso largo y complejo que culminó en el año 476 d.C., cuando el último emperador, Rómulo Augústulo, fue depuesto.<br><br>Factores internos como la corrupción, la inestabilidad política y la crisis económica debilitaron profundamente las estructuras del imperio.<br><br>A esto se sumaron las invasiones de pueblos germánicos, que terminaron por fragmentar el control romano en Europa occidental."
+  },
+  {
+    "id": 1,
+    "title": "La Revolución Francesa y sus consecuencias",
+    "author": "Javier Morales",
+    "date": "2020-07-22",
+    "image": "images/image-02",
+    "content": "La Revolución Francesa comenzó en 1789 como una respuesta a las profundas desigualdades sociales y económicas del Antiguo Régimen.<br><br>El derrocamiento de la monarquía y la proclamación de la república marcaron un cambio radical en la historia política de Europa.<br><br>Sus ideales de libertad, igualdad y fraternidad influyeron en movimientos revolucionarios de todo el mundo."
+  },
+  {
+    "id": 2,
+    "title": "El Antiguo Egipto y el poder de los faraones",
+    "author": "Lucía Pérez",
+    "date": "2019-11-10",
+    "image": "images/image-03",
+    "content": "El Antiguo Egipto se desarrolló a lo largo del río Nilo, cuya regularidad permitió el crecimiento de una civilización estable y próspera.<br><br>Los faraones eran considerados dioses vivientes y concentraban el poder político, religioso y militar.<br><br>Las grandes pirámides y templos reflejan la importancia del más allá en la cosmovisión egipcia."
+  },
+  {
+    "id": 3,
+    "title": "La Edad Media: mitos y realidades",
+    "author": "Carlos Romero",
+    "date": "2022-01-05",
+    "image": "images/image-04",
+    "content": "La Edad Media ha sido tradicionalmente vista como una época oscura, aunque esta visión ha sido revisada por los historiadores modernos.<br><br>Durante este periodo surgieron universidades, avances técnicos y una rica vida cultural.<br><br>Fue una etapa diversa y cambiante que sentó las bases de la Europa moderna."
+  },
+  {
+    "id": 4,
+    "title": "El descubrimiento de América",
+    "author": "Ana Torres",
+    "date": "2018-10-12",
+    "image": "images/image-05",
+    "content": "En 1492, Cristóbal Colón llegó a América creyendo haber encontrado una nueva ruta hacia Asia.<br><br>Este acontecimiento puso en contacto a dos mundos que habían evolucionado de forma independiente durante milenios.<br><br>Las consecuencias fueron profundas, incluyendo cambios demográficos, económicos y culturales a escala global."
+  },
+  {
+    "id": 5,
+    "title": "La Guerra Fría y el mundo bipolar",
+    "author": "Fernando López",
+    "date": "2021-09-30",
+    "image": "images/image-06",
+    "content": "La Guerra Fría fue un periodo de tensión política y militar entre Estados Unidos y la Unión Soviética tras la Segunda Guerra Mundial.<br><br>Aunque no hubo un enfrentamiento directo a gran escala, sí se produjeron conflictos indirectos en diversas regiones.<br><br>El mundo quedó dividido en dos bloques ideológicos que marcaron la política internacional durante décadas."
+  },
+  {
+    "id": 6,
+    "title": "El Renacimiento y el despertar cultural",
+    "author": "Isabel Martín",
+    "date": "2019-05-18",
+    "image": "images/image-07",
+    "content": "El Renacimiento fue un movimiento cultural que surgió en Italia durante los siglos XV y XVI.<br><br>Se caracterizó por un renovado interés en la cultura clásica grecorromana y en el ser humano como centro del conocimiento.<br><br>Artistas como Leonardo da Vinci y Miguel Ángel simbolizan este periodo de gran creatividad."
+  },
+  {
+    "id": 7,
+    "title": "La independencia de las colonias americanas",
+    "author": "Roberto Sánchez",
+    "date": "2020-08-01",
+    "image": "images/image-08",
+    "content": "Durante los siglos XVIII y XIX, muchas colonias americanas iniciaron procesos de independencia de las potencias europeas.<br><br>Estos movimientos estuvieron influenciados por las ideas ilustradas y los ejemplos de otras revoluciones.<br><br>El resultado fue el surgimiento de nuevos estados y un cambio en el equilibrio político mundial."
+  },
+  {
+    "id": 8,
+    "title": "La Primera Guerra Mundial",
+    "author": "Elena Ruiz",
+    "date": "2022-06-28",
+    "image": "images/image-09",
+    "content": "La Primera Guerra Mundial estalló en 1914 tras el asesinato del archiduque Francisco Fernando.<br><br>Las alianzas militares y el nacionalismo contribuyeron a la rápida expansión del conflicto.<br><br>La guerra transformó profundamente la política, la sociedad y la economía del siglo XX."
+  },
+  {
+    "id": 9,
+    "title": "La antigua Grecia y el nacimiento de la democracia",
+    "author": "Miguel Herrera",
+    "date": "2018-04-09",
+    "image": "images/image-10",
+    "content": "La antigua Grecia estuvo formada por numerosas polis independientes, entre las que destacó Atenas.<br><br>En Atenas se desarrolló una forma temprana de democracia basada en la participación directa de los ciudadanos.<br><br>Las ideas políticas y filosóficas griegas siguen influyendo en el pensamiento occidental actual."
+  }
+]
